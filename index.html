@@ -1,19 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My First Webpage</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    .contact-form {
+      background: #fff;
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .contact-form button {
+      padding: 10px 20px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .contact-form button:hover {
+      background: #0056b3;
+    }
+  </style>
 </head>
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const message = document.getElementById("message");
+  
+      if (!name.value || !email.value || !message.value) {
+        alert("Please fill in all fields.");
+        return;
+      }
+  
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!email.value.match(emailPattern)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+  
+      alert("Form submitted successfully!");
+      name.value = "";
+      email.value = "";
+      message.value = "";
+    });
+  </script>
+  
 <body>
-  <h1>Welcome to My Webpage</h1>
-  <p>This is a webpage on my journey as a apex planet intern</p>
-  <img src="imgex.jpg" alt="Placeholder image">
-  <br><br>
-  <a href="https://example.com" target="_blank">Visit Example</a>
-  <br><br>
-  <button onclick="showMessage()">Click Me!</button>
-
-  <script src="script.js"></script>
+  <form class="contact-form" id="contactForm">
+    <h2>Contact Us</h2>
+    <input type="text" id="name" placeholder="Your Name" />
+    <input type="email" id="email" placeholder="Your Email" />
+    <textarea id="message" placeholder="Your Message"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
 </body>
 </html>

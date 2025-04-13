@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+    .todo-container {
+      max-width: 400px;
+      background: #fff;
+      margin: auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    input[type="text"] {
+      width: 75%;
+      padding: 10px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 10px 15px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    li {
+      background: #f9f9f9;
+      padding: 10px;
+      margin: 5px 0;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="todo-container">
+    <h2>To-Do List</h2>
+    <input type="text" id="taskInput" placeholder="Enter a task..." />
+    <button onclick="addTask()">Add</button>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const task = input.value.trim();
+      if (task === "") return;
+
+      const li = document.createElement("li");
+      li.textContent = task;
+
+      const btn = document.createElement("button");
+      btn.textContent = "❌";
+      btn.onclick = () => li.remove();
+
+      li.appendChild(btn);
+      document.getElementById("taskList").appendChild(li);
+
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
