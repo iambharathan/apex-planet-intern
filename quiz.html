@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz App</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #eef;
+    }
+
+    .quiz-container {
+      background: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .answers button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <div id="question" class="question">Loading question...</div>
+    <div class="answers" id="answers"></div>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "What does CSS stand for?",
+        answers: ["Cascading Style Sheets", "Creative Style System", "Colorful Style Sheets"],
+        correct: "Cascading Style Sheets"
+      },
+      {
+        question: "Which language is used to make websites interactive?",
+        answers: ["HTML", "JavaScript", "CSS"],
+        correct: "JavaScript"
+      }
+    ];
+
+    let currentIndex = 0;
+
+    function loadQuestion() {
+      const current = quizData[currentIndex];
+      document.getElementById("question").textContent = current.question;
+      const answersDiv = document.getElementById("answers");
+      answersDiv.innerHTML = "";
+
+      current.answers.forEach(answer => {
+        const btn = document.createElement("button");
+        btn.textContent = answer;
+        btn.onclick = () => checkAnswer(answer);
+        answersDiv.appendChild(btn);
+      });
+
+      document.getElementById("result").textContent = "";
+    }
+
+    function checkAnswer(selected) {
+      const correct = quizData[currentIndex].correct;
+      const result = selected === correct ? "Correct ✅" : `Wrong ❌. Correct: ${correct}`;
+      document.getElementById("result").textContent = result;
+
+      setTimeout(() => {
+        currentIndex++;
+        if (currentIndex < quizData.length) {
+          loadQuestion();
+        } else {
+          document.getElementById("question").textContent = "Quiz Complete!";
+          document.getElementById("answers").innerHTML = "";
+        }
+      }, 1000);
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fetch API - Joke Generator</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    .joke {
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Random Joke Generator 😂</h1>
+  <button onclick="getJoke()">Get a Joke</button>
+  <div class="joke" id="joke">Click the button to see a joke!</div>
+
+  <script>
+    async function getJoke() {
+      const res = await fetch("https://api.chucknorris.io/jokes/random");
+      const data = await res.json();
+      document.getElementById("joke").textContent = data.value;
+    }
+  </script>
+</body>
+</html>
