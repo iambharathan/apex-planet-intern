@@ -3,75 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Form</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f4f4f4;
-    }
-    .contact-form {
-      background: #fff;
-      max-width: 400px;
-      margin: auto;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .contact-form button {
-      padding: 10px 20px;
-      background: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .contact-form button:hover {
-      background: #0056b3;
-    }
-  </style>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<script>
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-  
-      const name = document.getElementById("name");
-      const email = document.getElementById("email");
-      const message = document.getElementById("message");
-  
-      if (!name.value || !email.value || !message.value) {
-        alert("Please fill in all fields.");
-        return;
-      }
-  
-      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-      if (!email.value.match(emailPattern)) {
-        alert("Please enter a valid email address.");
-        return;
-      }
-  
-      alert("Form submitted successfully!");
-      name.value = "";
-      email.value = "";
-      message.value = "";
-    });
-  </script>
-  
 <body>
-  <form class="contact-form" id="contactForm">
-    <h2>Contact Us</h2>
-    <input type="text" id="name" placeholder="Your Name" />
-    <input type="email" id="email" placeholder="Your Email" />
-    <textarea id="message" placeholder="Your Message"></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+  <header>
+    <h1>hi its bharathan</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a web developer passionate about building modern and responsive websites.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li>Portfolio Website</li>
+      <li>To-Do App</li>
+      <li>Product Listing Page</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: bharathanmoorthy.com</p>
+    <p>LinkedIn: linkedin.com/in/bharathank</p>
+  </section>
+
+  <footer>
+    <p>© 2025 BHARATHAN K</p>
+  </footer>
 </body>
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product List</title>
+</head>
+<body>
+  <h2>Products</h2>
+  <label>Filter by Category:</label>
+  <select id="categoryFilter" onchange="renderProducts()">
+    <option value="all">All</option>
+    <option value="electronics">Electronics</option>
+    <option value="fashion">Fashion</option>
+  </select>
+
+  <label>Sort by:</label>
+  <select id="sortOption" onchange="renderProducts()">
+    <option value="default">Default</option>
+    <option value="price">Price</option>
+    <option value="rating">Rating</option>
+  </select>
+
+  <div id="productContainer"></div>
+
+  <script>
+    const products = [
+      { name: "Smartphone", category: "electronics", price: 699, rating: 4.5 },
+      { name: "T-shirt", category: "fashion", price: 29, rating: 4.0 },
+      { name: "Laptop", category: "electronics", price: 1099, rating: 4.7 },
+      { name: "Sneakers", category: "fashion", price: 89, rating: 4.2 }
+    ];
+
+    function renderProducts() {
+      const category = document.getElementById("categoryFilter").value;
+      const sort = document.getElementById("sortOption").value;
+
+      let filtered = products.filter(p => category === "all" || p.category === category);
+
+      if (sort === "price") {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sort === "rating") {
+        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+      const container = document.getElementById("productContainer");
+      container.innerHTML = filtered.map(p => `<div>${p.name} - $${p.price} - ⭐${p.rating}</div>`).join("");
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>
