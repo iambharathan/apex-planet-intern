@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capstone E-Commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-4 shadow-md">
+      <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+        <h1 class="text-2xl font-bold">ShopSmart</h1>
+        <button id="cart-btn" class="relative">
+          🛒
+          <span id="cart-count" class="absolute -top-2 -right-3 bg-red-600 text-xs rounded-full w-5 h-5 text-center">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="max-w-6xl mx-auto px-4 py-6">
+      <h2 class="text-xl font-semibold mb-4">Products</h2>
+      <section id="product-list" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <aside id="cart-panel" class="fixed top-0 right-0 w-80 h-full bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+      <div class="p-4 border-b flex justify-between items-center">
+        <h3 class="text-lg font-semibold">Your Cart</h3>
+        <button id="close-cart" class="text-red-500 text-xl font-bold">&times;</button>
+      </div>
+      <div id="cart-items" class="p-4 space-y-4 overflow-y-auto h-[calc(100%-80px)]"></div>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4 mt-10">
+      <p>&copy; 2025 ShopSmart. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
